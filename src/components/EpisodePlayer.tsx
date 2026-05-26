@@ -23,6 +23,7 @@ export function EpisodePlayer({
   const [messages, setMessages] = useState<Message[]>(episode.startingMessages);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [errorActionable, setErrorActionable] = useState(false);
   const [openCharacter, setOpenCharacter] = useState<Character | null>(null);
   const [openTruth, setOpenTruth] = useState<Message | null>(null);
   const [hasKey, setHasKey] = useState<boolean | null>(null);
@@ -56,6 +57,7 @@ export function EpisodePlayer({
   async function generateMore() {
     setLoading(true);
     setError(null);
+    setErrorActionable(false);
     try {
       const userKey = getApiKey();
       if (!userKey) {
@@ -76,6 +78,7 @@ export function EpisodePlayer({
       const data = await res.json();
       if (!res.ok) {
         setError(data.error ?? "Generation failed.");
+        if (res.status === 401 || res.status === 403) setErrorActionable(true);
         return;
       }
       setMessages((prev) => [...prev, ...(data.messages as Message[])]);
@@ -150,8 +153,16 @@ export function EpisodePlayer({
           </div>
         )}
         {error && (
-          <div className="mx-4 my-3 px-3 py-2 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-sm">
-            {error}
+          <div className="mx-4 my-3 px-3 py-2.5 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 text-sm leading-relaxed">
+            <div>{error}</div>
+            {errorActionable && (
+              <Link
+                href="/settings"
+                className="inline-block mt-2 text-rose-900 dark:text-rose-200 underline underline-offset-2 font-medium"
+              >
+                Open Settings
+              </Link>
+            )}
           </div>
         )}
       </div>

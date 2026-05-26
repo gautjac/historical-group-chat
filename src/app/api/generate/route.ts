@@ -14,11 +14,15 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  const { seasonId, episodeId, history, userKey } = body;
+  const { seasonId, episodeId, history } = body;
+  const userKey = (body.userKey ?? "").trim();
 
   if (!userKey || !userKey.startsWith("sk-ant-")) {
     return Response.json(
-      { error: "Missing or malformed Anthropic API key." },
+      {
+        error:
+          "Your Anthropic key is missing or doesn't start with sk-ant-. Open Settings and paste a fresh key from console.anthropic.com.",
+      },
       { status: 401 },
     );
   }
@@ -50,6 +54,38 @@ export async function POST(request: Request) {
       messages: [{ role: "user", content: buildUserMessage(history) }],
     });
   } catch (err) {
+    if (err instanceof Anthropic.APIError) {
+      if (err.status === 401) {
+        return Response.json(
+          {
+            error:
+              "Anthropic rejected this key. It may be mistyped, revoked, or from a workspace that doesn't have access. Try generating a fresh key at console.anthropic.com and pasting it in Settings.",
+          },
+          { status: 401 },
+        );
+      }
+      if (err.status === 403) {
+        return Response.json(
+          {
+            error:
+              "Anthropic accepted the key but won't authorize this request. The key may be restricted, or your workspace may not have access to claude-sonnet-4-6.",
+          },
+          { status: 403 },
+        );
+      }
+      if (err.status === 429) {
+        return Response.json(
+          {
+            error: "Rate limited by Anthropic. Wait a moment and try again.",
+          },
+          { status: 429 },
+        );
+      }
+      return Response.json(
+        { error: `Anthropic returned ${err.status}: ${err.message}` },
+        { status: 502 },
+      );
+    }
     const message = err instanceof Error ? err.message : "Anthropic call failed.";
     return Response.json({ error: message }, { status: 502 });
   }

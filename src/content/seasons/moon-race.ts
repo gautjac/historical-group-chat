@@ -228,6 +228,145 @@ export const moonRace: Season = {
       fate: "Resigns from NASA October 1968 — three months before Apollo 8 orbits the moon, nine months before Apollo 11 lands. Dies 1992.",
       color: "#d97706",
     },
+    {
+      id: "mishin",
+      name: "Vasily Mishin",
+      role: "Korolev's deputy; future Chief Designer",
+      born: "1917",
+      died: "2001",
+      bio: "Aircraft engineer turned rocket designer. Was the pilot of the captured V-2 the Soviets reverse-engineered at Bleicherode in 1945. Korolev's deputy for twenty years; sharp, competent, less politically deft than his boss.",
+      ideology:
+        "Continue Korolev's work, even when the system has stopped supporting it.",
+      voice:
+        "Engineer-precise, quietly exhausted. Better with a slide rule than a Politburo committee.",
+      allies: ["korolev"],
+      enemies: ["glushko"],
+      blindspots:
+        "Believes the program can survive on engineering merit alone. Cannot.",
+      keyFact:
+        "Will inherit the Soviet moon programme on Korolev's death in 1966 and watch the N1 rocket fail four times in flight between 1969 and 1972 — including a failure on July 3, 1969, two weeks before Apollo 11, that levelled Launch Complex 110 at Baikonur and ended any realistic Soviet moon-shot.",
+      fate: "Removed from his position in 1974 and replaced by Glushko, who erased him from the program's records for years. Eventually rehabilitated. Dies 2001.",
+      color: "#991b1b",
+    },
+    {
+      id: "grissom",
+      name: "Virgil \"Gus\" Grissom",
+      role: "Mercury Seven astronaut",
+      born: "1926",
+      died: "1967",
+      bio: "Indiana, Air Force, Korean War combat pilot (100 missions). Flew Liberty Bell 7 on Mercury-Redstone 4 (1961) — capsule sank in the Atlantic when the hatch blew prematurely, Grissom nearly drowned. Commanded Gemini 3 (1965). Slated to command Apollo 1 in 1967.",
+      ideology:
+        "Get the engineering right or get killed by it. Test pilots die for reasons; astronauts had better not.",
+      voice:
+        "Indiana laconic. Blunt to the point of rudeness with engineers; warm with his crew.",
+      allies: ["white"],
+      enemies: [],
+      blindspots:
+        "Knows the Apollo Command Module is a mess; doesn't push hard enough up the chain to stop the timeline.",
+      keyFact:
+        "Hung a lemon on the Apollo Command Module during a press tour in late 1966. The trainers called the spacecraft a lemon too. He died in it five months later.",
+      fate: "Dies January 27, 1967 in the Apollo 1 fire on Launch Complex 34. Was forty.",
+      color: "#a3a3a3",
+    },
+    {
+      id: "white",
+      name: "Edward H. White II",
+      role: "Astronaut, first American spacewalker",
+      born: "1930",
+      died: "1967",
+      bio: "Air Force test pilot, West Point class of '52. Son of a brigadier general. First American to walk in space — Gemini 4, June 3, 1965; floated outside the capsule for 23 minutes on a gold-plated umbilical. Slated as Senior Pilot on Apollo 1.",
+      ideology:
+        "Service, family, fitness. NASA's golden boy in the mid-1960s.",
+      voice:
+        "West Point precision, dry humour, deeply Methodist. The closest thing to a poet in the astronaut corps.",
+      allies: ["grissom"],
+      enemies: [],
+      blindspots:
+        "Trusts the system. The system kills him.",
+      keyFact:
+        "When Gemini 4's mission controller ordered him to terminate the EVA after 23 minutes, he said: \"It's the saddest moment of my life.\"",
+      fate: "Dies January 27, 1967 in the Apollo 1 fire. Was thirty-six. Buried at West Point at his family's request, not Arlington.",
+      color: "#c084fc",
+    },
+    {
+      id: "chaffee",
+      name: "Roger B. Chaffee",
+      role: "Astronaut, rookie",
+      born: "1935",
+      died: "1967",
+      bio: "Naval aviator from Grand Rapids, Michigan. Selected by NASA in 1963; spent four years in training without flying. Apollo 1 would have been his first spaceflight. Married to Martha; two young children.",
+      ideology:
+        "Earn the seat. Don't speak unless you have something operational to say.",
+      voice:
+        "Quiet, methodical, the youngest voice on the loop.",
+      allies: ["grissom", "white"],
+      enemies: [],
+      blindspots:
+        "The rookie's deference. Defers to Grissom and White on issues he could have escalated.",
+      keyFact:
+        "Was photographing U-2 imagery of Cuban missile sites in 1962 — the photographs that helped Kennedy's team confirm the missiles were there.",
+      fate: "Dies January 27, 1967 in the Apollo 1 fire. Was thirty-one.",
+      color: "#fde047",
+    },
+    {
+      id: "aldrin",
+      name: "Buzz Aldrin",
+      role: "Astronaut; Apollo 11 Lunar Module Pilot",
+      born: "1930",
+      bio: "Air Force fighter pilot in Korea (66 missions, two MiG kills). MIT doctorate in astronautics — his dissertation invented the techniques of orbital rendezvous the program would depend on. NASA astronaut from 1963; Gemini 12 in 1966 (final Gemini flight, longest EVA to date). Lunar Module Pilot on Apollo 11.",
+      ideology:
+        "Mission discipline. Engineering rigour. Has thought more about orbital mechanics than anyone else in the room and assumes others know it.",
+      voice:
+        "Engineer-clinical, slightly stiff, occasionally sharp. Says exactly what he means and assumes you'll keep up.",
+      allies: ["armstrong"],
+      enemies: [],
+      blindspots:
+        "Believes orbital mechanics is enough. The public wants poetry he is not built to deliver.",
+      keyFact:
+        "Took communion on the lunar surface — a Presbyterian elder, he brought wine and bread, and read silently from John 15 while waiting for the EVA. NASA did not publicise it.",
+      fate: "Lives. Struggles with depression and alcoholism in the 1970s; recovers. Becomes one of the loudest advocates for crewed Mars missions. Still alive as of this writing.",
+      color: "#e0e7ff",
+    },
+    {
+      id: "collins",
+      name: "Michael Collins",
+      role: "Astronaut; Apollo 11 Command Module Pilot",
+      born: "1930",
+      died: "2021",
+      bio: "Air Force test pilot, Edwards. NASA astronaut from 1963; Gemini 10 in 1966. Command Module Pilot on Apollo 11 — orbits the Moon alone while Armstrong and Aldrin walk. Will write the best astronaut memoir ever published, *Carrying the Fire*, in 1974.",
+      ideology:
+        "Service. The third seat is a real job. Hates the question \"weren't you the loneliest man?\" — he knew exactly what he was doing.",
+      voice:
+        "Warm, literary, the best writer of the three. The astronaut who can describe a sunset.",
+      allies: ["armstrong", "aldrin"],
+      enemies: [],
+      blindspots:
+        "Self-deprecating to a fault about what he himself accomplished.",
+      keyFact:
+        "For 21 hours and 36 minutes on July 20–21, 1969, when his orbit took him to the far side of the Moon with no radio contact, he was the most alone any human being has ever been.",
+      fate: "Retires from NASA in 1970; runs the Smithsonian's National Air and Space Museum through its 1976 opening. Dies April 28, 2021, of cancer.",
+      color: "#fb923c",
+    },
+    {
+      id: "nixon",
+      name: "Richard M. Nixon",
+      role: "President of the United States",
+      born: "1913",
+      died: "1994",
+      bio: "Eisenhower's vice president (so: in the room when Sputnik happened, sidelined when Sputnik happened). Lost to Kennedy in 1960. Lost the California governor's race in 1962 and told the press they wouldn't have him to kick around anymore. Comes back in 1968 and wins. Inherits the moon program he didn't build.",
+      ideology:
+        "Political opportunism. Will take credit for what he didn't fund. Hates the Kennedys and is about to become the president who completes their goal.",
+      voice:
+        "Awkward, deliberate, prone to overstatement. The opposite of Kennedy in every register.",
+      allies: ["kissinger"],
+      enemies: ["jfk"],
+      blindspots:
+        "Cannot help making the moon landing about himself.",
+      keyFact:
+        "His call to Armstrong and Aldrin on the lunar surface — \"Hello, Neil and Buzz, I am talking to you by telephone from the Oval Room at the White House\" — was scripted by Frank Borman, who advised him to keep it short.",
+      fate: "Resigns August 9, 1974, ahead of certain impeachment for Watergate. Lives to 1994.",
+      color: "#1e3a8a",
+    },
   ],
   episodes: [
     {
@@ -310,6 +449,325 @@ export const moonRace: Season = {
       ],
       endingHook:
         "Twenty-nine days from now, a small dog named Laika will be welded into a capsule on a Sputnik 2 launch vehicle. She will reach orbit. She will not come back. Khrushchev will not stop here.",
+    },
+    {
+      id: "vostok-1",
+      number: 2,
+      title: "Vostok 1",
+      premise:
+        "April 12, 1961. Senior Lieutenant Yuri Gagarin lifts off from Tyura-Tam at 09:07 Moscow time on a Vostok 3KA — single orbit, 108 minutes, ejected at 7 km, landed by parachute in a wheat field near Engels, Saratov. The first human being has been in space. The Soviet Union has done it again, and the new American president has six days until the Bay of Pigs.",
+      timeWindow: "April 11–13, 1961",
+      location: "Tyura-Tam · Saratov · Moscow · Washington · Huntsville",
+      characterStakes: {
+        gagarin:
+          "Will fly. Trained for fifteen months; was named the prime crew six days ago. Knows the third backup pilot has just been removed from rotation. Tries not to think about what landing alive will mean for the rest of his life.",
+        korolev:
+          "Insists on being at the launch pad. Has been white-haired for three years. The Vostok is the most thoroughly tested machine he has ever built; he is still terrified.",
+        khrushchev:
+          "Sochi, on holiday, awakened by aide. Within an hour orders a press conference, a parade, every embassy on the phone. Has decided before lunchtime that this is the foreign-policy event of the decade.",
+        "von-braun":
+          "Huntsville, hearing the news on the radio. Alan Shepard's Mercury-Redstone flight is three weeks out — fifteen minutes suborbital, a hop. He knew this was coming. Says nothing publicly. Privately accelerates everything.",
+        jfk:
+          "Six days from the Bay of Pigs landing he has already approved. Reading the TASS wire copy at breakfast. Sends a cable congratulating Khrushchev. Spends the rest of the morning asking his cabinet what America can do that the Russians cannot.",
+        lbj:
+          "Vice President, sidelined by Kennedy. Sees this as the opening to push for what he has been quietly preparing — a commitment beyond satellites, beyond orbits, all the way to the Moon. He will have it inside six weeks.",
+        cronkite:
+          "Covering it across the morning on CBS — still doing special reports, a year before he takes the Evening News chair. Tries to explain to the audience what an orbit is.",
+      },
+      mustHitBeats: [
+        "Apr 11: Korolev meets Gagarin at the cosmodrome the evening before. The cosmonauts call him Sergei Pavlovich; he treats them like sons.",
+        "Apr 12 06:00 Moscow: suit-up; final medical checks; the bus ride to the pad. Gagarin asks the bus to stop and urinates on its rear tyre — a tradition Russian cosmonauts will perform for the next sixty years.",
+        "09:07 Moscow time: Vostok-K rocket lifts off. Gagarin transmits «Поехали» — \"Let's go.\"",
+        "09:25: Orbit confirmed. Apogee 327 km, perigee 169 km.",
+        "10:25: Retrofire over Africa. Service module separates badly — a cable doesn't release for ten minutes, causes a chaotic re-entry roll. Kept secret until 1989.",
+        "10:55 Moscow: Gagarin ejects at 7 km, parachutes into a field near Engels, Saratov. First person to see him is a forestry worker's wife, Anna Takhtarova, with her granddaughter Rumiya. He says: \"Do not be frightened, I am a Soviet like you.\"",
+        "Within an hour, Khrushchev promotes Gagarin from Senior Lieutenant to Major.",
+        "Apr 14: JFK convenes his cabinet. \"Is there any place we can catch them? What can we do? Let's find somebody — anybody. I don't care if it's the janitor over there, if he knows how.\"",
+        "Within weeks: Kennedy will commit America to the Moon. Gagarin will never fly in space again — the Politburo will not risk the national asset.",
+      ],
+      startingMessages: [
+        {
+          id: "msg-001",
+          characterId: "system",
+          text: "April 12, 1961. Tyura-Tam, Kazakh SSR. 09:07 Moscow time. Senior Lieutenant Yuri Gagarin, twenty-seven years old, lifts off on a Vostok-K rocket. Single orbit planned. No human being has ever been in space before.",
+          kind: "system",
+          basis: "established",
+        },
+        {
+          id: "msg-002",
+          characterId: "gagarin",
+          text: "Поехали. Let's go.",
+          basis: "established",
+          sourceNote:
+            "Gagarin's transmission at liftoff. The Russian \"Poyekhali\" became one of the most-quoted lines of the twentieth century.",
+        },
+        {
+          id: "msg-003",
+          characterId: "korolev",
+          text: "Burn time correct. He is in orbit. Telemetry holds. I am going to sit down for the first time in three days.",
+          basis: "interpretive",
+          sourceNote:
+            "Korolev was at the launch bunker and famously distressed. The line is dramatized; his exhaustion is documented in his deputy's memoirs.",
+        },
+        {
+          id: "msg-004",
+          characterId: "khrushchev",
+          text: "Comrades. A Soviet man. In space. The first. I want him on Red Square the moment his feet are on the ground. I want every embassy on the wire by sundown. And promote him to Major. Do it before lunch.",
+          basis: "compressed",
+          sourceNote:
+            "Khrushchev did order an immediate parade and a same-day promotion to Major. The wording is paraphrased into chat register.",
+        },
+        {
+          id: "msg-005",
+          characterId: "jfk",
+          text: "Cable to Premier Khrushchev. Sincere congratulations on the safe flight of the astronaut. The peoples of the United States share with the people of the Soviet Union their satisfaction. Then: get me Webb. Get me Wiesner. Find me something — anything — we can win.",
+          basis: "compressed",
+          sourceNote:
+            "Kennedy's public cable to Khrushchev on April 12 is preserved verbatim. The \"find me anything\" exchange paraphrases his cabinet meetings of April 14, recorded in Sorensen's notes.",
+        },
+      ],
+      endingHook:
+        "Three weeks from now, on May 5, Alan Shepard will fly fifteen minutes of a suborbital arc inside a Mercury capsule. The gap will not be closed by parity. On May 25, Kennedy will stand before Congress and ask for a commitment to the Moon. Within eight years, three Americans will leave for it.",
+    },
+    {
+      id: "rice",
+      number: 3,
+      title: "We choose to go to the moon",
+      premise:
+        "September 12, 1962. Rice University Stadium, Houston, Texas. 100°F on the field. President Kennedy delivers thirty-five minutes of prepared remarks — the philosophical case for the political bet he placed sixteen months ago. The speech that explains the Apollo programme to America, and to itself.",
+      timeWindow: "September 12, 1962",
+      location: "Rice Stadium, Houston · Cape Canaveral · Moscow",
+      characterStakes: {
+        jfk:
+          "Has bet the programme on the Moon. Today's speech is the philosophical case for what he committed to politically in May 1961. Knows from Webb that Apollo will be the largest peacetime federal expenditure in American history. Has to make it sound less like a budget line and more like an idea.",
+        webb:
+          "NASA Administrator since 1961. Has built the agency from 7,000 employees to nearly 30,000 in eighteen months. Knows the cost — twenty to twenty-five billion dollars by 1969. Wants the President to sell it the way only the President can sell anything.",
+        lbj:
+          "Vice President. Pushed Kennedy into the moon commitment in 1961. Wanted Houston for the Manned Spacecraft Center for Texas-political reasons and got it. Today's speech is on his home turf, his moment of vindication, his choice of stage.",
+        "von-braun":
+          "Director of Marshall Space Flight Center. The Saturn V is in development. Has finally been listened to after a decade of being told to wait. Wants more money than even Kennedy is asking for.",
+        korolev:
+          "Moscow. Reading the wire reports the same afternoon. The Americans are publicly committing to what the Soviet programme has been doing in silence. Sees the moment when openness might beat his system.",
+        khrushchev:
+          "Publicly: dismissive. \"We are not racing the Americans to the Moon.\" Privately: orders the Soviet moon programme accelerated. Two parallel lunar programmes will start, neither well funded.",
+        cronkite:
+          "CBS Evening News anchor for five months. Covers the speech live. Knows half his audience does not know what Houston is.",
+      },
+      mustHitBeats: [
+        "Morning: Kennedy tours the Manned Spacecraft Center site, meets engineers, looks at the Mercury capsule from John Glenn's Friendship 7 flight.",
+        "Backstage at Rice Stadium: final edits to the speech text. Theodore Sorensen present. Kennedy hand-marks the page.",
+        "10:00 AM Central: Kennedy walks to the podium. The audience is roughly 35,000, mostly Rice students.",
+        "The line: \"We choose to go to the Moon. We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard.\"",
+        "Kennedy ad-libs around the prepared text: \"because that goal will serve to organize and measure the best of our energies and skills.\" (Not in the typed draft.)",
+        "Mentions Saturn V by name — the rocket that does not yet exist.",
+        "Acknowledges the cost: more than fifty cents per American per week. \"That is more than five times what we spend each year on cigars and cigarettes combined.\"",
+        "Speech ends. Standing ovation. Kennedy leaves for a tour of Cape Canaveral the same day.",
+        "By evening Moscow time, TASS has the speech. Khrushchev's response by morning is dismissive in public; the Politburo memo is different.",
+      ],
+      startingMessages: [
+        {
+          id: "msg-001",
+          characterId: "system",
+          text: "September 12, 1962. Rice University Stadium, Houston, Texas. 10:00 AM Central. Temperature on the field: 100°F. President Kennedy has thirty-five minutes of prepared remarks. The audience is roughly 35,000 — mostly Rice students.",
+          kind: "system",
+          basis: "established",
+        },
+        {
+          id: "msg-002",
+          characterId: "jfk",
+          text: "We set sail on this new sea because there is new knowledge to be gained, and new rights to be won, and they must be won and used for the progress of all people. We choose to go to the Moon. We choose to go to the Moon in this decade and do the other things, not because they are easy, but because they are hard.",
+          basis: "established",
+          sourceNote:
+            "From Kennedy's Rice Stadium address, September 12, 1962. The sentence as delivered.",
+        },
+        {
+          id: "msg-003",
+          characterId: "webb",
+          text: "Mr Vice President. If he sells it today we get the appropriation. If he doesn't we get a hearing.",
+          basis: "interpretive",
+          sourceNote:
+            "Webb and LBJ were both present. The line is invented to convey Webb's documented preoccupation with funding.",
+        },
+        {
+          id: "msg-004",
+          characterId: "korolev",
+          text: "They have committed in public to a destination. Inside ten days the Politburo will demand we beat them to it. The N1 does not yet exist on paper that satisfies me. The schedule will not be the schedule the Politburo writes.",
+          basis: "compressed",
+          sourceNote:
+            "Korolev did receive an accelerated mandate after Kennedy's speech. The exact line is dramatized; the program-feasibility doubts are documented.",
+        },
+        {
+          id: "msg-005",
+          characterId: "khrushchev",
+          text: "Let them go. We have no plans to compete with them on this. Our programme is for peaceful science, not propaganda gestures.",
+          basis: "established",
+          sourceNote:
+            "Khrushchev's public posture in late 1962 was that the USSR was not racing for the Moon. Soviet documents declassified in the 1990s revealed the parallel N1-L3 lunar programme was running.",
+        },
+      ],
+      endingHook:
+        "Fourteen months from this afternoon, the man at the podium will be dead. The decade he just committed America to will continue without him. Inside seven years, three of his countrymen will sit on top of a Saturn V rocket, the one he just named, at the spaceport that will be renamed for him.",
+    },
+    {
+      id: "apollo-1",
+      number: 4,
+      title: "Apollo 1",
+      premise:
+        "January 27, 1967. A routine plugs-out test on Launch Complex 34, Cape Kennedy. The Apollo Command Module is pressurized with 100% oxygen at 16.7 psi — higher than ambient. At 6:31 PM EST a spark, almost certainly electrical, ignites materials in the cabin. The three-person crew — Grissom, White, Chaffee — is dead in seventeen seconds. The hatch design (inward-opening, three layers, ninety seconds to open under ideal conditions) makes rescue impossible. The Apollo programme stops for twenty-one months.",
+      timeWindow: "January 27, 1967 + 72 hours",
+      location: "Launch Complex 34, Cape Kennedy · Houston · Washington · Huntsville",
+      characterStakes: {
+        grissom:
+          "Has been complaining about the Apollo Command Module for months — wiring, the high-oxygen atmosphere, the volume of flammable Velcro. Hung a lemon on the spacecraft during a press tour. Will die today and never get the chance to be the third American on the Moon, which was always how he thought this would end.",
+        white:
+          "Senior Pilot of Apollo 1. First American to walk in space, June 1965. Has a wife (Patricia) and two children at Patrick Air Force Base. Will be buried at West Point, not Arlington, at his family's request.",
+        chaffee:
+          "Apollo 1 would have been his first spaceflight after four years of training. Wife Martha, daughter Sheryl Lyn (8), son Stephen (5). Photographed U-2 imagery of Cuban missile sites in 1962 — the photographs that helped confirm the missiles were there. Will die today at thirty-one.",
+        webb:
+          "NASA Administrator. Inherits the political wreckage. Must defend the programme before Congress while the Vietnam War erodes the budget. The investigation that follows will be the most contentious of his career.",
+        "von-braun":
+          "Director, Marshall Space Flight Center. Says almost nothing publicly for weeks. Privately accelerates the Saturn V testing schedule — convinced the only way to honour the dead is to keep flying.",
+        lbj:
+          "President. Has to defend NASA's budget while protests mount over Vietnam. The fire makes both political fights harder.",
+      },
+      mustHitBeats: [
+        "Afternoon: crew arrives at Pad 34, suits up, strapped into the Command Module. Atmosphere set to 100% oxygen at 16.7 psi for the plugs-out test.",
+        "6:00 PM: Communications problems begin. Grissom on the loop: \"How are we going to get to the Moon if we can't talk between two and three buildings?\"",
+        "6:31 PM EST: first telemetry indication of fire. Crew transmission preserved on tape; will not be replayed in this scene.",
+        "Seventeen seconds: cabin pressure rises past hatch-survival limits; fire consumes the cabin atmosphere.",
+        "Pad crew on the outer level cannot open the hatch — three layers, all inward-opening against the over-pressure.",
+        "6:36 PM: hatch finally opened. All three astronauts dead.",
+        "Same evening: Webb cancels the next morning's scheduled events; calls every NASA Center director to Washington.",
+        "Jan 28: NASA Apollo 204 Review Board convened. Frank Borman appointed to the investigation.",
+        "Spring 1967: redesigns. Hatch becomes outward-opening, quick-release. Atmosphere reduced to a 60/40 nitrogen/oxygen mix at sea-level pressure for ground testing. Flammable materials catalogued and removed.",
+        "April 1967: NASA designates the mission \"Apollo 1\" posthumously, at the families' request.",
+        "Twenty-one months: the next crewed Apollo mission (Apollo 7) flies in October 1968.",
+      ],
+      startingMessages: [
+        {
+          id: "msg-001",
+          characterId: "system",
+          text: "Launch Complex 34, Cape Kennedy. January 27, 1967, late afternoon. The Apollo 1 crew — Command Pilot Virgil Grissom, Senior Pilot Edward White, Pilot Roger Chaffee — is suited and strapped into the Command Module for a plugs-out integration test. The cabin atmosphere is 100% oxygen at 16.7 psi.",
+          kind: "system",
+          basis: "established",
+        },
+        {
+          id: "msg-002",
+          characterId: "grissom",
+          text: "Reading you about five by five. How are we going to get to the Moon if we can't talk between two and three buildings?",
+          basis: "established",
+          sourceNote:
+            "Grissom's complaint during the communications difficulty is preserved on the test transcript. One of the last things he is recorded as saying.",
+        },
+        {
+          id: "msg-003",
+          characterId: "chaffee",
+          text: "Copy. We'll keep trying. Pad, can we get a recheck on the COMM 2 voltage.",
+          basis: "interpretive",
+          sourceNote:
+            "Chaffee's role on the loop was communicator with the pad. The line is paraphrased to keep his voice in the scene without dramatising what came next.",
+        },
+        {
+          id: "msg-004",
+          characterId: "system",
+          text: "6:31 PM EST. A spark — almost certainly electrical, almost certainly under Grissom's couch — ignites materials inside the cabin. The 100% oxygen atmosphere at 16.7 psi turns the interior into a flash fire. Cabin pressure exceeds the hatch's survival rating within seconds. The crew's transmissions during the seventeen seconds that follow are preserved on tape and on the transcript. They will not be played here.",
+          kind: "system",
+          basis: "established",
+        },
+        {
+          id: "msg-005",
+          characterId: "webb",
+          text: "Cancel tomorrow's events. I want every Center director in Washington by 0700. We need to understand exactly what we did to those three men and then we have to decide, very carefully, whether and how we keep flying.",
+          basis: "interpretive",
+          sourceNote:
+            "Webb did cancel the next day's events and convene the investigation overnight. The exact line is dramatized.",
+        },
+      ],
+      endingHook:
+        "The next crewed Apollo mission, Apollo 7, will fly twenty-one months from tonight, October 1968. The Block II Command Module that flies it will have an outward-opening hatch, a 60/40 nitrogen/oxygen ground atmosphere, no flammable Velcro on the floor, and Grissom's name on a plaque inside it. Six months after that, Apollo 11 will land on the Moon. The dead three never see it. The programme remembers them as the reason they did.",
+    },
+    {
+      id: "apollo-11",
+      number: 5,
+      title: "Apollo 11",
+      premise:
+        "July 16–24, 1969. Eight days. A Saturn V lifts off from Kennedy Space Center at 9:32 AM EDT on July 16 with Armstrong, Aldrin, and Collins aboard. Four days later, the Lunar Module Eagle descends into the Sea of Tranquility with a guidance-computer alarm Mission Control has to evaluate in real time. At 10:56 PM EDT on July 20, Armstrong steps onto the lunar surface. Twenty-one and a half hours later they leave. Two weeks before, in the Kazakh desert, the Soviet N1 moon rocket had failed catastrophically on its second test launch — taking with it the last realistic Soviet chance of getting there first.",
+      timeWindow: "July 16–24, 1969",
+      location: "Kennedy Space Center · cislunar space · Sea of Tranquility · Houston · Oval Office · CBS · Baikonur · LBJ Ranch",
+      characterStakes: {
+        armstrong:
+          "Commander. Will be the first human being to step onto another world. Has not told his wife what he plans to say. His pulse rate during the manual landing of the Eagle will be 150 — the calmest possible reading for the circumstances.",
+        aldrin:
+          "Lunar Module Pilot. Second man on the Moon, a fact he will spend decades not minding more than he says. Will take communion on the surface — Presbyterian elder, brought bread and wine, read silently from John 15 while waiting for the EVA.",
+        collins:
+          "Command Module Pilot. Will orbit the Moon alone for 21 hours and 36 minutes while Armstrong and Aldrin walk. For the part of his orbit on the far side, he will be the most alone any human being has ever been. He will spend the rest of his life answering questions about loneliness he never felt.",
+        "von-braun":
+          "Director, Marshall Space Flight Center. The Saturn V is his — the largest rocket ever flown, all 363 feet of it, all five F-1 engines on the first stage, 7.6 million pounds of thrust at liftoff. Has waited for this since he was twenty. Stands at Cape Kennedy, watching, and does not say much.",
+        nixon:
+          "President. Inherited the programme he did not build. Will speak to the astronauts from the Oval Office on the lunar surface — a call scripted by Frank Borman, who advised him to keep it short. Has a second speech prepared in case the astronauts cannot lift off; it begins \"Fate has ordained that the men who went to the moon to explore in peace will stay on the moon to rest in peace.\" He will not have to give it.",
+        cronkite:
+          "CBS Evening News, eight days on the air. Will remove his glasses, rub his eyes, and say \"Oh, boy\" when the Eagle lands. Will narrate the EVA live for an audience of roughly 600 million — at that time the largest television audience in human history.",
+        lbj:
+          "Out of office. Watching from his ranch on the Pedernales — the same ranch where he stood in the yard in October 1957 and looked at the sky after Sputnik. Lights a cigarette he is not supposed to be smoking. Says little.",
+        mishin:
+          "Moscow. Chief Designer after Korolev's death. Watched the N1 fail on July 3 — thirteen days ago — destroying Launch Complex 110 at Baikonur in the largest non-nuclear explosion in human history at that time. The Soviet press has been told not to cover Apollo 11 in detail. He is watching American television feeds via a tape forwarded through the KGB.",
+      },
+      mustHitBeats: [
+        "July 3: USSR's N1 rocket fails on its second test launch, destroys LC-110 at Baikonur. The Soviet moon programme is functionally over. Western press does not know yet.",
+        "July 16 09:32 EDT: Saturn V SA-506 lifts off. CBS audience: approximately 600 million worldwide.",
+        "July 19: Apollo 11 enters lunar orbit. Eagle separates July 20.",
+        "July 20 20:17 UTC (4:17 PM EDT): Eagle lands on the Sea of Tranquility. Computer 1202 alarm during descent; Steve Bales in Houston calls \"go.\" Armstrong takes manual control, lands with about twenty-five seconds of fuel remaining.",
+        "20:18 UTC: \"Houston, Tranquility Base here. The Eagle has landed.\"",
+        "Crew rest was scheduled but waived — they want to do the EVA now.",
+        "02:56 UTC July 21 (22:56 EDT July 20): Armstrong steps onto the surface. \"That's one small step for [a] man, one giant leap for mankind.\"",
+        "03:39 UTC: Aldrin joins. Takes communion privately. Plants the flag.",
+        "Nixon's call from the Oval Office. Borman has briefed him to keep it short.",
+        "21h 36m after landing, Eagle ascends. Rendezvous with Columbia. Trans-Earth injection.",
+        "July 24: splashdown in the Pacific. USS Hornet recovery. Quarantine begins.",
+      ],
+      startingMessages: [
+        {
+          id: "msg-001",
+          characterId: "system",
+          text: "July 16, 1969. Kennedy Space Center, Florida. 09:32 EDT. A Saturn V rocket — three stages, 363 feet, 7.6 million pounds of thrust — lifts off carrying Armstrong, Aldrin, and Collins. Live worldwide television audience: approximately 600 million. Thirteen days ago the Soviet N1 moon rocket exploded on its launch pad at Baikonur, destroying Launch Complex 110 in the largest non-nuclear explosion in human history at that time. The Western press does not know yet.",
+          kind: "system",
+          basis: "established",
+        },
+        {
+          id: "msg-002",
+          characterId: "armstrong",
+          text: "Roger, the clock is running. Tower clear.",
+          basis: "established",
+          sourceNote:
+            "Armstrong's actual transmission seconds after liftoff. Among the more famous laconic communications in the spaceflight record.",
+        },
+        {
+          id: "msg-003",
+          characterId: "mishin",
+          text: "Comrade. The radio has the Saturn five away. Confirm: we are saying nothing officially. The N1 site is still smoking. They cannot photograph it from orbit yet. Maintain the line.",
+          basis: "interpretive",
+          sourceNote:
+            "The N1 failed on July 3, 1969, destroying LC-110. Soviet authorities did not publicly acknowledge the failure for years. The line is dramatized; the silence policy is established.",
+        },
+        {
+          id: "msg-004",
+          characterId: "cronkite",
+          text: "We have liftoff. Thirty-two minutes past the hour. Liftoff on Apollo 11. The largest audience in the history of broadcasting is watching, we are told, and what they are watching is the first half-million miles of a journey that has been three hundred thousand years coming.",
+          basis: "interpretive",
+          sourceNote:
+            "Cronkite did cover the launch live on CBS. The exact wording is dramatized; the audience figure (~600 million) is accurate.",
+        },
+        {
+          id: "msg-005",
+          characterId: "von-braun",
+          text: "All five F-ones burned full duration. Stage one separation clean. The vehicle did what the vehicle was supposed to do. I am going to sit down now.",
+          basis: "interpretive",
+          sourceNote:
+            "Von Braun was at Cape Kennedy for the launch. The line is dramatized; his Saturn V did perform nominally on Apollo 11.",
+        },
+      ],
+      endingHook:
+        "Eight days from now they will splash down in the Pacific. Twenty-one days from now they will leave quarantine. Two months from now they will tour twenty-two countries in forty-five days. The Apollo programme will fly six more times, land five of them, return 382 kilograms of lunar rock — and end in 1972 with Apollo 17, after which no human being has stood on another world. Not yet.",
     },
   ],
 };

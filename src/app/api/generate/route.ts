@@ -41,7 +41,12 @@ export async function POST(request: Request) {
     "system",
   ]);
 
-  const client = new Anthropic({ apiKey: userKey });
+  const client = new Anthropic({
+    apiKey: userKey,
+    baseURL: "https://api.anthropic.com",
+  });
+  const envBaseURL = process.env.ANTHROPIC_BASE_URL;
+  const resolvedBaseURL = client.baseURL;
 
   let response;
   try {
@@ -88,6 +93,8 @@ export async function POST(request: Request) {
       const diagParts = [
         `key …${keyTail} (${keyLen} chars)`,
         `model claude-sonnet-4-6`,
+        `baseURL ${resolvedBaseURL}`,
+        envBaseURL ? `env ANTHROPIC_BASE_URL=${envBaseURL}` : null,
         requestId ? `request ${requestId}` : null,
         cfRay ? `cf ${cfRay}` : null,
         headerKeys.length === 0 ? "no response headers" : `headers: ${headerKeys.join(",")}`,

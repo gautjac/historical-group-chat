@@ -60,40 +60,73 @@ export async function POST(request: Request) {
         | undefined;
       const anthropicType = body?.error?.type;
       const anthropicMessage = body?.error?.message;
-      const detail = anthropicMessage
+
+      const headers = err.headers as
+        | Record<string, string | undefined>
+        | Headers
+        | undefined;
+      const headerGet = (k: string): string | undefined => {
+        if (!headers) return undefined;
+        if (typeof (headers as Headers).get === "function") {
+          return (headers as Headers).get(k) ?? undefined;
+        }
+        const rec = headers as Record<string, string | undefined>;
+        return rec[k] ?? rec[k.toLowerCase()] ?? undefined;
+      };
+      const requestId = headerGet("request-id") ?? headerGet("anthropic-request-id");
+      const cfRay = headerGet("cf-ray");
+      const keyTail = userKey.slice(-4);
+
+      const diagParts = [
+        `key …${keyTail}`,
+        `model claude-sonnet-4-6`,
+        requestId ? `request ${requestId}` : null,
+        cfRay ? `cf ${cfRay}` : null,
+      ].filter(Boolean);
+      const diag = ` [${diagParts.join(" · ")}]`;
+
+      console.error("[generate] Anthropic APIError", {
+        status: err.status,
+        message: err.message,
+        body,
+        requestId,
+        cfRay,
+        keyTail,
+      });
+
+      const explanation = anthropicMessage
         ? `Anthropic said: "${anthropicMessage}"${
             anthropicType ? ` (${anthropicType})` : ""
           }`
-        : `Anthropic returned ${err.status} with no error body — usually means the account exists but billing/credits haven't been set up at console.anthropic.com/settings/billing.`;
+        : err.status === 401
+        ? "Anthropic returned 401 with no error body. This usually means the key has restrictions (IP allowlist, workspace scope, or model scope) that block this request, or billing isn't set up. Other keys on the same account can work fine while a restricted key fails this way."
+        : `Anthropic returned ${err.status} with no body.`;
 
       if (err.status === 401) {
         return Response.json(
-          {
-            error: `Anthropic rejected this request. ${detail} If the key is fresh, double-check that the account has credits added.`,
-          },
+          { error: `${explanation}${diag}` },
           { status: 401 },
         );
       }
       if (err.status === 403) {
         return Response.json(
-          {
-            error: `Anthropic accepted the key but won't authorize this request. ${detail}`,
-          },
+          { error: `Anthropic refused this request. ${explanation}${diag}` },
           { status: 403 },
         );
       }
       if (err.status === 429) {
         return Response.json(
-          { error: "Rate limited by Anthropic. Wait a moment and try again." },
+          { error: `Rate limited by Anthropic. Wait a moment and try again.${diag}` },
           { status: 429 },
         );
       }
       return Response.json(
-        { error: `Anthropic returned ${err.status}. ${detail}` },
+        { error: `Anthropic returned ${err.status}. ${explanation}${diag}` },
         { status: 502 },
       );
     }
     const message = err instanceof Error ? err.message : "Anthropic call failed.";
+    console.error("[generate] non-API error", err);
     return Response.json({ error: message }, { status: 502 });
   }
 

@@ -73,34 +73,36 @@ export async function POST(request: Request) {
         const rec = headers as Record<string, string | undefined>;
         return rec[k] ?? rec[k.toLowerCase()] ?? undefined;
       };
+      const headerKeys = (() => {
+        if (!headers) return [] as string[];
+        if (typeof (headers as Headers).keys === "function") {
+          return Array.from((headers as Headers).keys());
+        }
+        return Object.keys(headers as Record<string, unknown>);
+      })();
       const requestId = headerGet("request-id") ?? headerGet("anthropic-request-id");
       const cfRay = headerGet("cf-ray");
       const keyTail = userKey.slice(-4);
+      const keyLen = userKey.length;
 
       const diagParts = [
-        `key …${keyTail}`,
+        `key …${keyTail} (${keyLen} chars)`,
         `model claude-sonnet-4-6`,
         requestId ? `request ${requestId}` : null,
         cfRay ? `cf ${cfRay}` : null,
+        headerKeys.length === 0 ? "no response headers" : `headers: ${headerKeys.join(",")}`,
       ].filter(Boolean);
       const diag = ` [${diagParts.join(" · ")}]`;
 
-      console.error("[generate] Anthropic APIError", {
-        status: err.status,
-        message: err.message,
-        body,
-        requestId,
-        cfRay,
-        keyTail,
-      });
+      const sdkMessage = err.message;
 
       const explanation = anthropicMessage
         ? `Anthropic said: "${anthropicMessage}"${
             anthropicType ? ` (${anthropicType})` : ""
           }`
         : err.status === 401
-        ? "Anthropic returned 401 with no error body. This usually means the key has restrictions (IP allowlist, workspace scope, or model scope) that block this request, or billing isn't set up. Other keys on the same account can work fine while a restricted key fails this way."
-        : `Anthropic returned ${err.status} with no body.`;
+        ? `Anthropic returned 401 with no error body. SDK says: "${sdkMessage}". The absence of response headers below means the request never reached Anthropic's API layer — this is usually a key-level block (IP allowlist or per-key restriction in the console) rather than a billing or model-access issue.`
+        : `Anthropic returned ${err.status} with no body. SDK says: "${sdkMessage}".`;
 
       if (err.status === 401) {
         return Response.json(
@@ -126,8 +128,11 @@ export async function POST(request: Request) {
       );
     }
     const message = err instanceof Error ? err.message : "Anthropic call failed.";
-    console.error("[generate] non-API error", err);
-    return Response.json({ error: message }, { status: 502 });
+    const stack = err instanceof Error ? err.stack?.split("\n")[1]?.trim() : "";
+    return Response.json(
+      { error: `Non-API error: ${message}${stack ? ` at ${stack}` : ""}` },
+      { status: 502 },
+    );
   }
 
   const toolUse = response.content.find((block) => block.type === "tool_use");

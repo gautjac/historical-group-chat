@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { seasons } from "@/content/seasons/french-revolution";
+import { seasons } from "@/content/seasons";
 
 export default function Home() {
   const list = Object.values(seasons);

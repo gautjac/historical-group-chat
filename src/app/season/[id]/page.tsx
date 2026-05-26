@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getSeason } from "@/content/seasons/french-revolution";
+import { getSeason } from "@/content/seasons";
 
 export default async function SeasonPage({
   params,

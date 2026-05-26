@@ -275,11 +275,3 @@ export const frenchRevolution: Season = {
     },
   ],
 };
-
-export const seasons = {
-  [frenchRevolution.id]: frenchRevolution,
-} as const;
-
-export function getSeason(id: string) {
-  return seasons[id as keyof typeof seasons] ?? null;
-}

@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getSeason } from "@/content/seasons/french-revolution";
+import { getSeason } from "@/content/seasons";
 import { EpisodePlayer } from "@/components/EpisodePlayer";
 
 export default async function EpisodePage({

@@ -1,9 +1,17 @@
 import type { Episode, Message, Season } from "@/lib/types";
 
 export function buildSystemPrompt(season: Season, episode: Episode): string {
-  const castLines = season.cast
+  // If the episode declares per-character stakes, only those characters are available
+  // (this keeps figures who don't belong in the time window — e.g. an astronaut in 1957 —
+  // out of the LLM's reach). If no stakes map is provided, fall back to the full cast.
+  const stakesMap = episode.characterStakes;
+  const availableCast = stakesMap
+    ? season.cast.filter((c) => stakesMap[c.id])
+    : season.cast;
+
+  const castLines = availableCast
     .map((c) => {
-      const stakes = episode.characterStakes?.[c.id];
+      const stakes = stakesMap?.[c.id];
       const parts = [
         `- ${c.id} | ${c.name} (${c.role}).`,
         `Bio: ${c.bio}`,

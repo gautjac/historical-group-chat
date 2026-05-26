@@ -1,5 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { getSeason } from "@/content/seasons/french-revolution";
+import { getSeason } from "@/content/seasons";
 import { APPEND_TOOL, buildSystemPrompt, buildUserMessage } from "@/lib/director";
 import type { GenerateRequest, Message } from "@/lib/types";
 
@@ -36,8 +36,14 @@ export async function POST(request: Request) {
     return Response.json({ error: "Unknown episode." }, { status: 404 });
   }
 
+  // Restrict character IDs to those scoped to this episode (via characterStakes).
+  // If no stakes map is defined, allow the full season cast.
+  const stakesMap = episode.characterStakes;
+  const episodeCharacters = stakesMap
+    ? season.cast.filter((c) => stakesMap[c.id])
+    : season.cast;
   const validCharacterIds = new Set([
-    ...season.cast.map((c) => c.id),
+    ...episodeCharacters.map((c) => c.id),
     "system",
   ]);
 

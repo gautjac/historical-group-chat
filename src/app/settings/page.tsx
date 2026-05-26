@@ -4,25 +4,36 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { clearApiKey, getApiKey, setApiKey } from "@/lib/storage";
 
+function maskKey(key: string) {
+  if (!key) return "";
+  const tail = key.slice(-4);
+  return `sk-ant-…${tail}`;
+}
+
 export default function SettingsPage() {
   const [value, setValue] = useState("");
-  const [saved, setSaved] = useState(false);
+  const [storedTail, setStoredTail] = useState("");
 
   useEffect(() => {
-    setValue(getApiKey());
+    const existing = getApiKey();
+    setValue(existing);
+    setStoredTail(existing);
   }, []);
 
-  function save(e: React.FormEvent) {
-    e.preventDefault();
-    setApiKey(value.trim());
-    setSaved(true);
-    setTimeout(() => setSaved(false), 1500);
+  function onChange(next: string) {
+    setValue(next);
+    const trimmed = next.trim();
+    setApiKey(trimmed);
+    setStoredTail(trimmed);
   }
 
   function clear() {
     clearApiKey();
     setValue("");
+    setStoredTail("");
   }
+
+  const valid = storedTail.startsWith("sk-ant-") && storedTail.length > 20;
 
   return (
     <div className="flex flex-col min-h-dvh max-w-xl w-full mx-auto">
@@ -48,46 +59,78 @@ export default function SettingsPage() {
           and discards the key after each request.
         </p>
 
-        <form onSubmit={save} className="grid gap-3">
-          <label className="text-xs uppercase tracking-wider text-zinc-500">
-            sk-ant-...
+        <div className="grid gap-3">
+          <label
+            htmlFor="api-key"
+            className="text-xs uppercase tracking-wider text-zinc-500"
+          >
+            sk-ant-…
           </label>
           <input
+            id="api-key"
             type="password"
             autoComplete="off"
+            spellCheck={false}
             value={value}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => onChange(e.target.value)}
             placeholder="sk-ant-api03-..."
-            className="rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-400"
+            className="rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-3 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-zinc-400"
           />
-          <div className="flex gap-2">
-            <button
-              type="submit"
-              className="rounded-full bg-zinc-900 dark:bg-zinc-100 text-zinc-50 dark:text-zinc-900 px-5 py-2 text-sm font-medium"
+
+          {storedTail ? (
+            <div
+              className={`flex items-center justify-between rounded-lg px-3 py-2 text-sm ${
+                valid
+                  ? "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300"
+                  : "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300"
+              }`}
             >
-              {saved ? "Saved" : "Save"}
-            </button>
-            {value && (
+              <div className="flex items-center gap-2 min-w-0">
+                <span
+                  className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                    valid ? "bg-emerald-500" : "bg-amber-500"
+                  }`}
+                />
+                <span className="truncate">
+                  {valid
+                    ? `Saved: ${maskKey(storedTail)}`
+                    : "Saved, but this doesn't look like an Anthropic key — should start with sk-ant-"}
+                </span>
+              </div>
               <button
                 type="button"
                 onClick={clear}
-                className="rounded-full border border-zinc-300 dark:border-zinc-700 px-5 py-2 text-sm"
+                className="text-xs underline underline-offset-2 ml-3 shrink-0"
               >
                 Clear
               </button>
-            )}
-          </div>
-        </form>
+            </div>
+          ) : (
+            <div className="rounded-lg px-3 py-2 text-sm bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400">
+              No key stored yet.
+            </div>
+          )}
+        </div>
 
         <p className="mt-6 text-xs text-zinc-500 leading-relaxed">
-          You can create a key at{" "}
+          Changes save automatically. Create a key at{" "}
           <a
             href="https://console.anthropic.com/settings/keys"
             className="underline"
             target="_blank"
             rel="noreferrer"
           >
-            console.anthropic.com
+            console.anthropic.com/settings/keys
+          </a>
+          {" — "}
+          you'll also need credits at{" "}
+          <a
+            href="https://console.anthropic.com/settings/billing"
+            className="underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            settings/billing
           </a>
           . The app uses claude-sonnet-4-6 by default.
         </p>

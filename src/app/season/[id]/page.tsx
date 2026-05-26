@@ -12,21 +12,11 @@ export default async function SeasonPage({
   if (!season) notFound();
 
   return (
-    <div className="flex flex-col min-h-dvh max-w-2xl w-full mx-auto">
-      <header className="px-5 pt-8 pb-2 flex items-center gap-3">
-        <Link
-          href="/"
-          aria-label="Home"
-          className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 text-xl leading-none w-7 h-7 flex items-center justify-center -ml-1"
-        >
-          ←
-        </Link>
-        <div className="text-xs uppercase tracking-wider text-zinc-500">
+    <div className="flex flex-col max-w-2xl w-full mx-auto">
+      <div className="px-5 pt-8 pb-10">
+        <div className="text-xs uppercase tracking-wider text-zinc-500 mb-3">
           Season · {season.era}
         </div>
-      </header>
-
-      <main className="flex-1 px-5 pb-10">
         <h1 className="text-3xl sm:text-4xl font-semibold leading-tight tracking-tight mb-3">
           {season.title}
         </h1>
@@ -85,7 +75,7 @@ export default async function SeasonPage({
             </Link>
           ))}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

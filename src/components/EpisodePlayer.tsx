@@ -96,7 +96,7 @@ export function EpisodePlayer({
   }
 
   return (
-    <div className="flex flex-col h-dvh bg-white dark:bg-zinc-950">
+    <div className="flex flex-col h-full bg-white dark:bg-zinc-950">
       <header className="shrink-0 border-b border-zinc-200 dark:border-zinc-800 px-4 py-3 flex items-center gap-3">
         <Link
           href={`/season/${season.id}`}

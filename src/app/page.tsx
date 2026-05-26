@@ -4,20 +4,8 @@ import { seasons } from "@/content/seasons/french-revolution";
 export default function Home() {
   const list = Object.values(seasons);
   return (
-    <div className="flex flex-col min-h-dvh">
-      <header className="px-5 pt-10 pb-6 flex items-center justify-between">
-        <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">
-          Historical Group Chat
-        </div>
-        <Link
-          href="/settings"
-          className="text-xs text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
-        >
-          Settings
-        </Link>
-      </header>
-
-      <main className="flex-1 px-5 pb-10 max-w-2xl w-full mx-auto">
+    <div className="flex flex-col">
+      <div className="px-5 pt-8 pb-10 max-w-2xl w-full mx-auto">
         <h1 className="text-3xl sm:text-4xl font-semibold leading-tight tracking-tight mb-3">
           History, but it's a group chat.
         </h1>
@@ -64,7 +52,7 @@ export default function Home() {
             </Link>
           ))}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

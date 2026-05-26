@@ -14,11 +14,14 @@ export interface Character {
   role: string;
   born?: string;
   died?: string;
+  bio: string;
   ideology: string;
   voice: string;
   allies: string[];
   enemies: string[];
   blindspots: string;
+  keyFact?: string;
+  fate?: string;
   color: string;
 }
 
@@ -41,6 +44,7 @@ export interface Episode {
   timeWindow: string;
   location: string;
   mustHitBeats: string[];
+  characterStakes?: Record<string, string>;
   startingMessages: Message[];
   endingHook: string;
 }

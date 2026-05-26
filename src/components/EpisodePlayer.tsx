@@ -184,6 +184,11 @@ export function EpisodePlayer({
       <CharacterSheet
         character={openCharacter}
         cast={season.cast}
+        stakes={
+          openCharacter
+            ? episode.characterStakes?.[openCharacter.id]
+            : undefined
+        }
         onClose={() => setOpenCharacter(null)}
       />
       <TruthSheet message={openTruth} onClose={() => setOpenTruth(null)} />

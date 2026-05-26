@@ -2,10 +2,18 @@ import type { Episode, Message, Season } from "@/lib/types";
 
 export function buildSystemPrompt(season: Season, episode: Episode): string {
   const castLines = season.cast
-    .map(
-      (c) =>
-        `- ${c.id} | ${c.name} (${c.role}). Ideology: ${c.ideology} Voice: ${c.voice} Blindspots: ${c.blindspots}`,
-    )
+    .map((c) => {
+      const stakes = episode.characterStakes?.[c.id];
+      const parts = [
+        `- ${c.id} | ${c.name} (${c.role}).`,
+        `Bio: ${c.bio}`,
+        `Ideology: ${c.ideology}`,
+        `Voice: ${c.voice}`,
+        `Blindspots: ${c.blindspots}`,
+      ];
+      if (stakes) parts.push(`In this scene: ${stakes}`);
+      return parts.join(" ");
+    })
     .join("\n");
 
   const beats = episode.mustHitBeats.map((b, i) => `${i + 1}. ${b}`).join("\n");

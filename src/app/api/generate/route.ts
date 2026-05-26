@@ -55,11 +55,21 @@ export async function POST(request: Request) {
     });
   } catch (err) {
     if (err instanceof Anthropic.APIError) {
+      const body = err.error as
+        | { error?: { type?: string; message?: string } }
+        | undefined;
+      const anthropicType = body?.error?.type;
+      const anthropicMessage = body?.error?.message;
+      const detail = anthropicMessage
+        ? `Anthropic said: "${anthropicMessage}"${
+            anthropicType ? ` (${anthropicType})` : ""
+          }`
+        : `Anthropic returned ${err.status} with no error body — usually means the account exists but billing/credits haven't been set up at console.anthropic.com/settings/billing.`;
+
       if (err.status === 401) {
         return Response.json(
           {
-            error:
-              "Anthropic rejected this key. It may be mistyped, revoked, or from a workspace that doesn't have access. Try generating a fresh key at console.anthropic.com and pasting it in Settings.",
+            error: `Anthropic rejected this request. ${detail} If the key is fresh, double-check that the account has credits added.`,
           },
           { status: 401 },
         );
@@ -67,22 +77,19 @@ export async function POST(request: Request) {
       if (err.status === 403) {
         return Response.json(
           {
-            error:
-              "Anthropic accepted the key but won't authorize this request. The key may be restricted, or your workspace may not have access to claude-sonnet-4-6.",
+            error: `Anthropic accepted the key but won't authorize this request. ${detail}`,
           },
           { status: 403 },
         );
       }
       if (err.status === 429) {
         return Response.json(
-          {
-            error: "Rate limited by Anthropic. Wait a moment and try again.",
-          },
+          { error: "Rate limited by Anthropic. Wait a moment and try again." },
           { status: 429 },
         );
       }
       return Response.json(
-        { error: `Anthropic returned ${err.status}: ${err.message}` },
+        { error: `Anthropic returned ${err.status}. ${detail}` },
         { status: 502 },
       );
     }
